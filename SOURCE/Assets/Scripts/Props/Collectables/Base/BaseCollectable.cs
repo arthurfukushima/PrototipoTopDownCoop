@@ -4,6 +4,17 @@ using System.Collections;
 public class BaseCollectable : MonoBehaviour, IPoolObject 
 {
     private SpawnPool myPool;
+    private SpawnPool onCollectFXPool;
+
+    protected virtual SpawnPool OnCollectFXPool{
+        get{
+            return onCollectFXPool;
+        }
+
+        set{
+            onCollectFXPool = value ;
+        }
+    }
 
     protected virtual void OnTriggerEnter(Collider pCollider)
     {
@@ -17,6 +28,8 @@ public class BaseCollectable : MonoBehaviour, IPoolObject
 
     protected virtual void OnCollect(BaseActor pCollector)
     {
+        OnCollectFXPool.Spawn(transform.position, Quaternion.identity);
+
         Despawn();
     }
 
