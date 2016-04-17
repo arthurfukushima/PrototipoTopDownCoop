@@ -113,8 +113,11 @@ public class BaseCharacter : BaseActor
 
     public void Rotate(Vector3 pDirection, float pSpeed)
     {
-        Quaternion rotation = Quaternion.LookRotation(pDirection);
-        transform.rotation = Quaternion.LerpUnclamped(transform.rotation, rotation, Time.deltaTime * pSpeed);
+        if(pDirection != Vector3.zero)
+        {
+            Quaternion rotation = Quaternion.LookRotation(pDirection);
+            transform.rotation = Quaternion.LerpUnclamped(transform.rotation, rotation, Time.deltaTime * pSpeed);
+        }
     }
 #endregion
 

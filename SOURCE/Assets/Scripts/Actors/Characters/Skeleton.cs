@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Skeleton : BaseAI
 {
@@ -32,5 +33,27 @@ public class Skeleton : BaseAI
         base.OnFinishedDeath();
 
         gameObject.SetActive(false);
+    }
+
+    public BasePlayer GetClosestPlayer()
+    {
+        List<BasePlayer> players = ActorsManager.Instance.GetPlayers();
+        BasePlayer target = null;
+
+        float minDist = 999;
+
+        foreach(BasePlayer player in players)
+        {
+            float distance = Vector3.Distance(transform.position, player.transform.position);
+
+            if(distance < minDist)
+            {
+                minDist = distance;
+                _Blackboard.currentTarget = player;
+                target = player;
+            }
+        }
+
+        return target;
     }
 }

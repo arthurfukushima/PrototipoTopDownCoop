@@ -10,6 +10,7 @@ public class BasePlayer : BaseCharacter
         base.Start();
 
         PlayersControlManager.Instance.RegisterPlayer(this);
+        ActorsManager.Instance.RegisterPlayer(this);
     }
 
     protected override void Update()
