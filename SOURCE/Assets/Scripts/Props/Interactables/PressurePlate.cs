@@ -10,9 +10,13 @@ public class PressurePlate : MonoBehaviour
     public Vector3 pressedPositionOffset;
     public bool isPressed;
 
+    public Transform spike;
+    private Vector3 spikeClosedPosition;
+
     private void Start()
     {
         originalPosition = transform.position;
+        spikeClosedPosition = spike.position;
     }
 
     private void OnTriggerEnter(Collider pCollider)
@@ -49,10 +53,12 @@ public class PressurePlate : MonoBehaviour
         if(isPressed)
         {
             transform.position = Vector3.MoveTowards(transform.position, originalPosition - pressedPositionOffset, Time.deltaTime);
+            spike.position = Vector3.MoveTowards(spike.position, spikeClosedPosition + Vector3.down * 1.5f, Time.deltaTime * 3.0f);
         }
         else
         {
             transform.position = Vector3.MoveTowards(transform.position, originalPosition, Time.deltaTime);
+            spike.position = Vector3.MoveTowards(spike.position, spikeClosedPosition, Time.deltaTime * 3.0f);
         }
     }
 }

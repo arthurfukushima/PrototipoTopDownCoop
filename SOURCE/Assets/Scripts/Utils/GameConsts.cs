@@ -5,6 +5,7 @@ public static class AnimatoHash
     public static int FULLBODY_IDLE = Animator.StringToHash("FullBody.Idle");
     public static int FULLBODY_RUN = Animator.StringToHash("FullBody.Run");
     public static int FULLBODY_ATTACK = Animator.StringToHash("FullBody.Attack");
+    public static int FULLBODY_DAMAGE = Animator.StringToHash("FullBody.Damage");
 
     public static int STATE_MOVEMENT_IDLE = Animator.StringToHash("MovementLayer.Idle");
     public static int STATE_MOVEMENT_RUN = Animator.StringToHash("MovementLayer.Run");

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public abstract class SKState<T>
 {
+    protected bool isCurrentState;
     protected float timeOnState;
 	protected int mecanimStateHash;
 	protected SKStateMachine<T> machine;
@@ -46,6 +47,7 @@ public abstract class SKState<T>
 
 	public virtual void Begin()
 	{
+        isCurrentState = true;
         timeOnState = 0.0f;
     }
 	
@@ -61,7 +63,9 @@ public abstract class SKState<T>
 	
 	
 	public virtual void End()
-	{}
+	{
+        isCurrentState = false;
+    }
 
     public virtual void OnGUI()
     {

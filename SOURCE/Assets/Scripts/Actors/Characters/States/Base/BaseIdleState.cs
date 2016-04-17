@@ -3,6 +3,18 @@ using System.Collections;
 
 public class BaseIdleState : SKState<BaseCharacter>
 {
+    public override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        context.onReceivedDamageCallback += OnReceivedDamage;
+    }
+
+    public void OnReceivedDamage(BaseActor pBully, int pDamage)
+    {
+        context.ChangeState<BaseDamageState>();
+    }
+    
     public override void Begin()
     {
         base.Begin();

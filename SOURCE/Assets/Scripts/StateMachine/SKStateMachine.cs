@@ -13,6 +13,14 @@ public class SKStateMachine<T>
 	public SKState<T> previousState;
 	public float elapsedTimeInState = 0f;
 
+    private Type currentStateType;
+    public Type CurrentStateType
+    {
+        get
+        {
+            return currentStateType;
+        }
+    }
 
     private Dictionary<System.Type, SKState<T>> states = new Dictionary<System.Type, SKState<T>>();
 	private SKState<T> currentState;
@@ -26,6 +34,8 @@ public class SKStateMachine<T>
 		AddState( pInitialState );
 		currentState = pInitialState;
 		currentState.Begin();
+
+        currentStateType = typeof( T );
 	}
 
 
@@ -61,7 +71,7 @@ public class SKStateMachine<T>
 	{
 		// avoid changing to the same state
 		var newType = typeof( R );
-		if( currentState.GetType() == newType )
+        if( currentStateType == newType )
 			return currentState as R;
 
 		// only call end if we have a currentState
@@ -70,17 +80,34 @@ public class SKStateMachine<T>
 
 		#if UNITY_EDITOR
 		// do a sanity check while in the editor to ensure we have the given state in our state list
-		if( !states.ContainsKey( newType ) )
-		{
-			var error = GetType() + ": state " + newType + " does not exist. Did you forget to add it by calling addState?";
-			Debug.LogError( error );
-			throw new Exception( error );
-		}
+//		if( !states.ContainsKey( newType ) )
+//		{
+//			var error = GetType() + ": state " + newType + " does not exist. Did you forget to add it by calling addState?";
+//			Debug.LogError( error );
+//			throw new Exception( error );
+//		}
 		#endif
+  
+        previousState = currentState;
 
-		// swap states and call begin
-		previousState = currentState;
-		currentState = states[newType];
+        currentStateType = newType;
+
+        if(states.ContainsKey(newType))
+            currentState = states[newType];
+        else
+        {
+            foreach(Type r in states.Keys)
+            {
+                if(r.IsSubclassOf(typeof(R))) 
+                {
+                    currentState = states [r];
+                }
+            }
+        }
+
+
+        // swap states and call begin
+//		currentState = states[newType];
 		currentState.Begin();
 		elapsedTimeInState = 0f;
 

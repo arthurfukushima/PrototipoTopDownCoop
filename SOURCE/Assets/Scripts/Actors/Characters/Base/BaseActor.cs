@@ -3,6 +3,9 @@ using System.Collections;
 
 public class BaseActor : MonoBehaviour 
 {
+    public  delegate void OnReceivedDamage(BaseActor pBully, int pDamage);
+    public OnReceivedDamage onReceivedDamageCallback;
+
     public int maxHealth;
     public int currentHealth;
 
@@ -20,13 +23,16 @@ public class BaseActor : MonoBehaviour
     public virtual void ApplyDamageTo(BaseActor pActor, int pDamage)
     {
         if(pActor != null)
-            pActor.ReceiveDamage(pDamage);
+            pActor.ReceiveDamage(this, pDamage);
     }
 
-    public virtual void ReceiveDamage(int pDamage)
+    public virtual void ReceiveDamage(BaseActor pBully, int pDamage)
     {
         if(!_IsAlive)
             return;
+
+        if(onReceivedDamageCallback != null)
+            onReceivedDamageCallback(pBully, pDamage);
 
         currentHealth -= pDamage;
 

@@ -10,7 +10,7 @@ public class BaseCharacter : BaseActor
     private PhysicsController physicsController;
     private GameplayController gameplayController;
 
-    private SKStateMachine<BaseCharacter> stateMachine;
+    protected SKStateMachine<BaseCharacter> stateMachine;
 
     public AnimationController _AnimationController 
     {
@@ -59,7 +59,7 @@ public class BaseCharacter : BaseActor
         }
     }
 
-    public SKStateMachine<BaseCharacter> _StateMachine 
+    public virtual SKStateMachine<BaseCharacter> _StateMachine 
     {
         get {
             if(stateMachine == null)
@@ -68,6 +68,7 @@ public class BaseCharacter : BaseActor
                 stateMachine.AddState(new BaseRunState());
                 stateMachine.AddState(new BaseAttackState());
                 stateMachine.AddState(new BaseRollState());
+                stateMachine.AddState(new BaseDamageState());
             }
 
             return stateMachine;

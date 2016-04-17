@@ -26,9 +26,9 @@ public class Chest : BaseActor
         }
     }
 
-    public override void ReceiveDamage(int pDamage)
+    public override void ReceiveDamage(BaseActor pBully, int pDamage)
     {
-        base.ReceiveDamage(pDamage);
+        base.ReceiveDamage(pBully, pDamage);
 
         if(currentHealth > 0.0f)
         {

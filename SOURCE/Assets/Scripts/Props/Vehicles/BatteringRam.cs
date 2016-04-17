@@ -40,10 +40,10 @@ public class BatteringRam : BaseActor
         tributesPanel.UpdateTributesText();
     }
 
-    public override void ReceiveDamage(int pDamage)
+    public override void ReceiveDamage(BaseActor pBully, int pDamage)
     {
         pDamage = 0;
-        base.ReceiveDamage(pDamage);
+        base.ReceiveDamage(pBully, pDamage);
     }
 
 
