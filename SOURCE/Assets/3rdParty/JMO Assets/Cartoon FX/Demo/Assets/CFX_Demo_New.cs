@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-// Cartoon FX - (c) 2015 - Jean Moreno
+// Cartoon FX - (c) 2014 - Jean Moreno
 //
 // Script handling the Demo scene of the Cartoon FX Packs
 
@@ -36,7 +36,6 @@ public class CFX_Demo_New : MonoBehaviour
 			GameObject child = this.transform.GetChild(i).gameObject;
 			particleExampleList.Add(child);
 		}
-		particleExampleList.Sort( delegate(GameObject o1, GameObject o2) { return o1.name.CompareTo(o2.name); } );
 		ParticleExamples = particleExampleList.ToArray();
 		
 		defaultCamPosition = Camera.main.transform.position;

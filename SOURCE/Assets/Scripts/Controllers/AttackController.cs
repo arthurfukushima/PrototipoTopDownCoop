@@ -3,7 +3,18 @@ using System.Collections;
 
 public class AttackController : MonoBehaviour 
 {
-    public void Attack()    
+    public SpawnPool iceBallProjectilePool;
+
+    public SpawnPool _IceBallProjectilePool {
+        get {
+            if(iceBallProjectilePool == null)
+                iceBallProjectilePool = PoolManager.Instance.GetPool("Projectile_IceBall_Pool");
+
+            return iceBallProjectilePool;
+        }
+    }
+
+    public void Attack(BaseActor pTarget, int pDamage)
     {
         
     }
@@ -22,5 +33,13 @@ public class AttackController : MonoBehaviour
                     pAttacker.ApplyDamageTo(actor, pDamage);  
             }
         }
+    }
+
+    public BaseProjectile AttackRanged(BaseActor pOwner, int pDamage, Vector3 pOrigin, Vector3 pDirection, float pSpeed)
+    {
+        BaseProjectile projectile = _IceBallProjectilePool.Spawn<BaseProjectile>(pOrigin, Quaternion.identity);
+        projectile.Create(pOwner, pDirection, pSpeed, pDamage);
+
+        return projectile;
     }
 }

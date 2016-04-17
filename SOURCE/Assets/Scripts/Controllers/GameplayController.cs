@@ -3,8 +3,12 @@ using System.Collections;
 
 public class GameplayController : MonoBehaviour 
 {
+    [Header("Movement Settings")]
     [Range(1, 10)]
     public float movementSpeed ; 
+
+    [Header("Attack Settings")]
+    public float projectileSpeed = 5.0f;
 
     [Header("Roll Settings")]
     [Range(0.01f, 0.6f)]

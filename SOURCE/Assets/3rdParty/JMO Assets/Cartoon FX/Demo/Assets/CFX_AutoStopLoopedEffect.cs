@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-// Cartoon FX  - (c) 2015 Jean Moreno
+// Cartoon FX  - (c) 2014 Jean Moreno
 //
 // Script handling looped effect in the Demo Scene, so that they eventually stop
 

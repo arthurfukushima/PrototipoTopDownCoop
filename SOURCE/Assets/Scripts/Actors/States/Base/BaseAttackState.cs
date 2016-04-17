@@ -12,6 +12,7 @@ public class BaseAttackState : SKState<BaseCharacter>
         base.OnInitialized();
 
         context._AnimationEventsController.CreateEvent("Attack_01", OnAttackAnimationEvent);
+        context._AnimationEventsController.CreateEvent("AttackRanged_01", OnAttackRangedAnimationEvent);
     }
 
     public override void Begin()
@@ -41,6 +42,14 @@ public class BaseAttackState : SKState<BaseCharacter>
     private void OnAttackAnimationEvent()
     {
         context._AttackController.AttackAsSphere(context, context.transform.position, 1.0f, 3);
+
+        context.ChangeState<BaseIdleState>();
+    }
+
+    private void OnAttackRangedAnimationEvent()
+    {
+        context._AttackController.AttackRanged(context, 10, context.transform.position + context.transform.forward + Vector3.up, 
+                                               context.transform.forward, context._GameplayController.projectileSpeed);
 
         context.ChangeState<BaseIdleState>();
     }
