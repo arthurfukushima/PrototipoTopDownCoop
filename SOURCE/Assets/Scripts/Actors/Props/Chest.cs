@@ -41,12 +41,12 @@ public class Chest : BaseActor
     public override void OnZeroHealth()
     {
         base.OnZeroHealth();
-        OnDeath();
+        OnFinishedDeath();
     }
 
-    public override void OnDeath()
+    public override void OnFinishedDeath()
     {
-        base.OnDeath();
+        base.OnFinishedDeath();
 
         DropCoins(Random.Range(1, 5));
         gameObject.SetActive(false);

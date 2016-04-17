@@ -80,12 +80,19 @@ public class BaseCharacter : BaseActor
     {
         _StateMachine.Update(Time.deltaTime);
     }
-
-    protected void OnGUI()
-    {
-//        _StateMachine.OnGUI();
-    }
 #endregion
+
+    public override void OnZeroHealth()
+    {
+        base.OnZeroHealth();
+
+        ChangeState<BaseDeathState>();
+    }
+
+    public override void OnFinishedDeath()
+    {
+        base.OnFinishedDeath();
+    }
 
 #region MOVEMENT
     public void Move(Vector3 pDirection, float pSpeed)

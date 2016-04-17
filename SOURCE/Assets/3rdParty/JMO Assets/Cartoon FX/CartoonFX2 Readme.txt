@@ -1,5 +1,5 @@
-﻿Cartoon FX Pack 2, version 1.98
-2015/12/19
+﻿Cartoon FX Pack 2, version 1.99
+2016/04/01
 © 2015 - Jean Moreno
 ================================
 
@@ -73,36 +73,43 @@ I'd be happy to see any effects used in your project, so feel free to drop me a 
 
 RELEASE NOTES
 -------------
-v1.98
+1.99
+- fixed Spawn System property 'hideObjectsInHierarchy' not being saved properly
+- added more options to the CFX Spawn System:
+	* "Spawn as children of this GameObject": will spawn the instances as children of the Spawn System GameObject
+	* "Only retrieve inactive GameObjects": will only retrieve GameObjects that are inactive
+	* "Instantiate new instances if needed": will create new instances when no inactive instance is available
+
+1.98
 - fixed compilation warnings with Unity 5.3+
 - fixed CFX_AutoDestructShuriken not working with some prefabs (Unity 5.3.1)
 
-v1.97
+1.97
 - put all shaders in the same folder
 - fixed some mobile effects using desktop materials
 
-v1.961
+1.961
 - fixed script conflict with War FX
 
-v1.96
+1.96
 - fixed deprecated method warning in Unity 4.3+
 
-v1.95
+1.95
 - updated "JMO Assets" menu
 
-v1.94
+1.94
 - updated Demo scene
 
-v1.93
+1.93
 - fixed serialization error with InspectorHelp script on builds
 
-v1.92
+1.92
 - fixed warning in Unity 4.3+ for Spawn System editor
 
-v1.91
+1.91
 - fixed CFX_SpawnSystem not being set dirty when changed
 
-v1.9
+1.9
 - updated CFX Editor
 - updated max particle count for each prefab to lower memory usage
 - improved some effects:
@@ -112,48 +119,48 @@ v1.9
 - added CFX Spawn System template prefab
 - fixed rotation for Vertical Billboard particles
 
-v1.82
+1.82
 - updated CFX Editor
 
-v1.81
+1.81
 - bug and compatibility fixes
 
-v1.8
+1.8
 - updated CFX Editor
  (now in Window > CartoonFX Easy Editor, and more options)
 - added JMO Assets menu (Window -> JMO Assets), to check for updates or get support
 
-v1.72
+1.72
 - Removed useless and missing scripts
 
-v1.71
+1.71
 - Fixed other Unity 4.1 incompatibilities
 
-v1.7
+1.7
 - Fixed Compilation error for CFX_SpawnSystem in Unity 4.1
 - Fixed Cartoon FX editor scaling, now supports "Size by Speed"
 
-v1.6
+1.6
 - Fixed bugs from Unity 4.0 while retaining compatibility with 3.5
 
-v1.5
+1.5
 - Fixed bugs from migration to Unity 4.0
 
-v1.4
+1.4
 - Added CFX_SpawnSystem to easily preload GameObjects and avoid Instantiating them after (very useful for mobile!)
 - You can now tint colors with CartoonFX Easy Editor (including gradients)
 - Added a script fixing a Shuriken bug where an emitter would emit before being translated to the desired position
 
-v1.3
+1.3
 - Enabled MipMaps for Mobile textures (turns out it's better for perfs despite the negligible memory overhead)
 - Set compression to automatic (PVRTC doesn't work for Android)
 
-v1.2
+1.2
 - added 4 new effects: Bats Cloud, Souls Escaping, Poison Cloud and Broken Heart (+variants)
 - removed the demo scripts from the prefabs
 - added auto destruct script to some prefabs
 
-v1.1
+1.1
 - added 10 new item pickup effects
 - added random starting rotation for ground decal textures
 - improved the ShinyStar texture

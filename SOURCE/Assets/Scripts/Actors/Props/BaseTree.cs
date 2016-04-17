@@ -50,12 +50,12 @@ public class BaseTree : BaseActor
     public override void OnZeroHealth()
     {
         base.OnZeroHealth();
-        OnDeath();
+        OnFinishedDeath();
     }
 
-    public override void OnDeath()
+    public override void OnFinishedDeath()
     {
-        base.OnDeath();
+        base.OnFinishedDeath();
 
         DropLogs(Random.Range(1, 5));
 

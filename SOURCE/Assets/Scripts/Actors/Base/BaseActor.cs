@@ -3,11 +3,19 @@ using System.Collections;
 
 public class BaseActor : MonoBehaviour 
 {
+    protected SpawnPool onDeathFXPool;
+
     public  delegate void OnReceivedDamage(BaseActor pBully, int pDamage);
     public OnReceivedDamage onReceivedDamageCallback;
 
     public int maxHealth;
     public int currentHealth;
+
+    public virtual SpawnPool _OnDeathFinishedFXPool {
+        get {
+            return onDeathFXPool;
+        }
+    }
 
     public bool _IsAlive{
         get{
@@ -47,8 +55,9 @@ public class BaseActor : MonoBehaviour
         
     }
 
-    public virtual void OnDeath()
+    public virtual void OnFinishedDeath()
     {
-        
+        if(_OnDeathFinishedFXPool != null)
+            _OnDeathFinishedFXPool.Spawn(transform.position, Quaternion.identity);
     }
 }
