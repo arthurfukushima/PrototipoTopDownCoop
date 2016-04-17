@@ -80,6 +80,7 @@ ModelImporter:
     7400000: Armature|Attack
     7400002: Armature|Idle
     7400004: Armature|Run
+    7400006: Armature|Dash_FWD
     9500000: //RootNode
     13700000: Cabelinho
     13700002: Character
@@ -108,7 +109,7 @@ ModelImporter:
       name: Armature|Attack
       takeName: Armature|Attack
       firstFrame: 0
-      lastFrame: 12
+      lastFrame: 13
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -128,7 +129,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.73839664
+      - time: 1
         functionName: OnAnimationEvent
         data: Attack_01
         objectReferenceParameter: {instanceID: 0}
@@ -308,6 +309,98 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Def_Hips
+        weight: 1
+      - path: Armature/Def_Hips/Def_Spine
+        weight: 1
+      - path: Armature/Def_Hips/Def_Spine/Def_Neck
+        weight: 1
+      - path: Armature/Def_Hips/Def_Spine/Def_Neck/Def_Head
+        weight: 1
+      - path: Armature/Def_Hips/Def_Spine/Def_Shoulder.L
+        weight: 1
+      - path: Armature/Def_Hips/Def_Spine/Def_Shoulder.L/Def_UprArm.L
+        weight: 1
+      - path: Armature/Def_Hips/Def_Spine/Def_Shoulder.L/Def_UprArm.L/Def_LwrArm.L
+        weight: 1
+      - path: Armature/Def_Hips/Def_Spine/Def_Shoulder.L/Def_UprArm.L/Def_LwrArm.L/Def_Hand.L
+        weight: 1
+      - path: Armature/Def_Hips/Def_Spine/Def_Shoulder.L/Def_UprArm.L/Def_LwrArm.L/Def_Hand.L/Def_FingerIndex.L
+        weight: 1
+      - path: Armature/Def_Hips/Def_Spine/Def_Shoulder.L/Def_UprArm.L/Def_LwrArm.L/Def_Hand.L/Def_FingerRing.L
+        weight: 1
+      - path: Armature/Def_Hips/Def_Spine/Def_Shoulder.L/Def_UprArm.L/Def_LwrArm.L/Def_Hand.L/Def_FingerThumb.L
+        weight: 1
+      - path: Armature/Def_Hips/Def_Spine/Def_Shoulder.R
+        weight: 1
+      - path: Armature/Def_Hips/Def_Spine/Def_Shoulder.R/Def_UprArm.R
+        weight: 1
+      - path: Armature/Def_Hips/Def_Spine/Def_Shoulder.R/Def_UprArm.R/Def_LwrArm.R
+        weight: 1
+      - path: Armature/Def_Hips/Def_Spine/Def_Shoulder.R/Def_UprArm.R/Def_LwrArm.R/Def_Hand.R
+        weight: 1
+      - path: Armature/Def_Hips/Def_Spine/Def_Shoulder.R/Def_UprArm.R/Def_LwrArm.R/Def_Hand.R/Def_FingerIndex.R
+        weight: 1
+      - path: Armature/Def_Hips/Def_Spine/Def_Shoulder.R/Def_UprArm.R/Def_LwrArm.R/Def_Hand.R/Def_FingerRing.R
+        weight: 1
+      - path: Armature/Def_Hips/Def_Spine/Def_Shoulder.R/Def_UprArm.R/Def_LwrArm.R/Def_Hand.R/Def_FingerThumb.R
+        weight: 1
+      - path: Armature/Def_Hips/Def_UprLeg.L
+        weight: 1
+      - path: Armature/Def_Hips/Def_UprLeg.L/Def_LwrLeg.L
+        weight: 1
+      - path: Armature/Def_Hips/Def_UprLeg.L/Def_LwrLeg.L/Def_Foot.L
+        weight: 1
+      - path: Armature/Def_Hips/Def_UprLeg.L/Def_LwrLeg.L/Def_Foot.L/Def_Toe.L
+        weight: 1
+      - path: Armature/Def_Hips/Def_UprLeg.R
+        weight: 1
+      - path: Armature/Def_Hips/Def_UprLeg.R/Def_LwrLeg.R
+        weight: 1
+      - path: Armature/Def_Hips/Def_UprLeg.R/Def_LwrLeg.R/Def_Foot.R
+        weight: 1
+      - path: Armature/Def_Hips/Def_UprLeg.R/Def_LwrLeg.R/Def_Foot.R/Def_Toe.R
+        weight: 1
+      - path: Cabelinho
+        weight: 1
+      - path: Character
+        weight: 1
+      - path: Shield
+        weight: 1
+      - path: Sword
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Dash_FWD
+      takeName: Armature|Dash_FWD
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
