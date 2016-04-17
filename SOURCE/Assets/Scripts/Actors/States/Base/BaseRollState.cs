@@ -23,7 +23,8 @@ public class BaseRollState : SKState<BaseCharacter>
                 direction = context.transform.forward;
         }
 
-        Debug.DrawRay(context.transform.position, direction, Color.blue, 3f);
+//        Debug.DrawRay(context.transform.position, direction, Color.blue, 3f);
+        context._AnimationController.CrossFadeInFixedTime(AnimatoHash.FULLBODY_DASH, 0.1f);
     }
 
     public override void Reason()

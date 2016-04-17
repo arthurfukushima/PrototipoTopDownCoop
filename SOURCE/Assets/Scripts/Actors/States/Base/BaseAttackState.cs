@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System;
 
 public class BaseAttackState : SKState<BaseCharacter>
 {
@@ -42,7 +40,6 @@ public class BaseAttackState : SKState<BaseCharacter>
     private void OnAttackAnimationEvent()
     {
         context._AttackController.AttackAsSphere(context, context.transform.position, 1.0f, 3);
-
         context.ChangeState<BaseIdleState>();
     }
 
@@ -52,12 +49,5 @@ public class BaseAttackState : SKState<BaseCharacter>
                                                context.transform.forward, context._GameplayController.projectileSpeed);
 
         context.ChangeState<BaseIdleState>();
-    }
-
-    public override void OnGUI()
-    {
-        base.OnGUI();
-
-        GUILayout.Box("Master: " + "RUN");
     }
 }

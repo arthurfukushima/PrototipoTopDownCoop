@@ -128,6 +128,11 @@ public class BaseCharacter : BaseActor
     }
 #endregion
 
+    public virtual void Knockback(Vector3 pDirection, float pForce)
+    {
+        
+    }
+
     public Vector3 RaycastMousePosition()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

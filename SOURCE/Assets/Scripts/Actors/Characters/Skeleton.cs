@@ -9,10 +9,10 @@ public class Skeleton : BaseAI
             if(stateMachine == null)
             {
                 stateMachine = new SKStateMachine<BaseCharacter>(this, new SkeletonIdleState());
-//                stateMachine.AddState(new SkeletonIdleState());
                 stateMachine.AddState(new SkeletonRunState());
                 stateMachine.AddState(new BaseDamageState());
                 stateMachine.AddState(new BaseDeathState());
+                stateMachine.AddState(new BaseKnockbackState());
             }
 
             return stateMachine;

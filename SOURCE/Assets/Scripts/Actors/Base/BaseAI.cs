@@ -13,4 +13,11 @@ public class BaseAI : BaseCharacter
             return blackboard;
         }
     }
+
+    public override void Knockback(Vector3 pDirection, float pForce)
+    {
+        base.Knockback(pDirection, pForce);
+
+        ChangeState<BaseKnockbackState>();
+    }
 }

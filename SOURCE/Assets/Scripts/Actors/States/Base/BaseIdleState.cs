@@ -42,6 +42,12 @@ public class BaseIdleState : SKState<BaseCharacter>
             return;
         }
 
+        if(Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            context.ChangeState<BaseSpecialSkill>();
+            return;
+        }
+
         if(Input.GetKeyDown(KeyCode.LeftControl))
         {
             context.ChangeState<BaseRollState>();

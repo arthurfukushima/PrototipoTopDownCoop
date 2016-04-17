@@ -15,6 +15,9 @@ public class BaseDamageState : SKState<BaseCharacter>
         base.Begin();
 
         context._AnimationController.CrossFadeInFixedTime(AnimatoHash.FULLBODY_DAMAGE, 0.1f);
+
+        context._PhysicsController.Velocity = Vector3.zero;
+        context._PhysicsController.IsKinematic = true;
     }
 
     public override void Reason()
@@ -26,6 +29,12 @@ public class BaseDamageState : SKState<BaseCharacter>
             context.ChangeState<BaseIdleState>();
             return;
         }
+    }
+
+    public override void End()
+    {
+        context._PhysicsController.IsKinematic = false;
+        base.End();
     }
 
     public void OnReceivedDamage(BaseActor pBully, int pDamage)
