@@ -8,10 +8,7 @@ public class BaseKnockbackState : SKState<BaseCharacter>
         base.Begin();
 
         context._AnimationController.CachedAnimator.applyRootMotion = true;
-
         context._AnimationController.CrossFadeInFixedTime(AnimatoHash.FULLBODY_KNOCKBACK, 0.1f);
-
-//        context._AnimationController.CachedAnimator.bodyPosition
     }
 
     public override void Reason()

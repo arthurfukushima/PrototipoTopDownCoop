@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class BaseProjectile : MonoBehaviour 
+public class BaseProjectile : MonoBehaviour, IPoolObject
 {
+    private SpawnPool myPool;
     private PhysicsController physicsController;
 
     private BaseActor owner;
@@ -39,4 +40,30 @@ public class BaseProjectile : MonoBehaviour
             }
         }
     }
+
+#region IPoolObject implementation
+
+    public void OnSpawn(SpawnPool pMyPool)
+    {
+        myPool = pMyPool;
+
+        DespawnIn(5.0f);
+    }
+
+    public void Despawn()
+    {
+        
+    }
+
+    public void DespawnIn(float fDelay)
+    {
+        myPool.DespawnIn(gameObject, fDelay);
+    }
+
+    public void OnDespawn()
+    {
+        
+    }
+
+#endregion
 }

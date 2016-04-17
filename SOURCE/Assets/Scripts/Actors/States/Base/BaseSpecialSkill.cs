@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class BaseSpecialSkill : SKState<BaseCharacter>
 {
@@ -31,7 +30,7 @@ public class BaseSpecialSkill : SKState<BaseCharacter>
             }
         }
 
-        _SpecialSkillFXPool.Spawn(context.transform.position, Quaternion.Euler(90, 0, 0));
+        _SpecialSkillFXPool.Spawn(context.transform.position + Vector3.up * 0.3f, Quaternion.Euler(90, 0, 0));
     }
 
     public override void Reason()
