@@ -80,12 +80,12 @@ public class SKStateMachine<T>
 
 		#if UNITY_EDITOR
 		// do a sanity check while in the editor to ensure we have the given state in our state list
-//		if( !states.ContainsKey( newType ) )
-//		{
+		if( !states.ContainsKey( newType ) )
+		{
 //			var error = GetType() + ": state " + newType + " does not exist. Did you forget to add it by calling addState?";
 //			Debug.LogError( error );
 //			throw new Exception( error );
-//		}
+		}
 		#endif
   
         previousState = currentState;

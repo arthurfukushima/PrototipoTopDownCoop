@@ -7,7 +7,9 @@ public class Skeleton : BaseAI
         get {
             if(stateMachine == null)
             {
-                stateMachine = new SKStateMachine<BaseCharacter>(this, new DummyIdleState());
+                stateMachine = new SKStateMachine<BaseCharacter>(this, new SkeletonIdleState());
+//                stateMachine.AddState(new SkeletonIdleState());
+                stateMachine.AddState(new SkeletonRunState());
                 stateMachine.AddState(new BaseDamageState());
                 stateMachine.AddState(new BaseDeathState());
             }

@@ -4,8 +4,8 @@ using System;
 
 public class BaseRunState : SKState<BaseCharacter>
 {
-    private Vector3 direction;
-    private float maxSpeed;
+    protected Vector3 direction;
+    protected float maxSpeed;
 
     public override void Begin()
     {
