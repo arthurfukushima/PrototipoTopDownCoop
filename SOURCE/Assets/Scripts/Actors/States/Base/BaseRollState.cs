@@ -45,12 +45,22 @@ public class BaseRollState : SKState<BaseCharacter>
         maxSpeed = context._GameplayController.movementSpeed;
 
         context.Move(direction, maxSpeed * context._GameplayController.rollSpeedMultiplier);
+
+        DamageEnemiesAhead();
     }
 
-    public override void OnGUI()
+    public void  DamageEnemiesAhead()
     {
-        base.OnGUI();
+        Collider[] colliders = Physics.OverlapSphere(context.transform.position, 1.0f);
 
-        GUILayout.Box("Master: " + "ROLL");
+        foreach(Collider col in colliders)
+        {
+            BaseActor ai = col.GetComponent<BaseActor>();
+
+            if(ai != null)
+            {
+                context.ApplyDamageTo(ai, 15);
+            }
+        }
     }
 }
