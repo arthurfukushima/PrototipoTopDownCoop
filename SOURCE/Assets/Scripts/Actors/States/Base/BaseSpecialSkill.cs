@@ -3,6 +3,17 @@ using System.Collections;
 
 public class BaseSpecialSkill : SKState<BaseCharacter>
 {
+    private SpawnPool specialSkillFXPool;
+
+    public SpawnPool _SpecialSkillFXPool {
+        get {
+            if(specialSkillFXPool == null)
+                specialSkillFXPool = PoolManager.Instance.GetPool("SpecialAura_FX_Pool");   
+
+            return specialSkillFXPool;
+        }
+    }
+
     public override void Begin()
     {
         base.Begin();
@@ -19,6 +30,8 @@ public class BaseSpecialSkill : SKState<BaseCharacter>
                 ai.Knockback(dir, 5.0f);
             }
         }
+
+        _SpecialSkillFXPool.Spawn(context.transform.position, Quaternion.Euler(90, 0, 0));
     }
 
     public override void Reason()
