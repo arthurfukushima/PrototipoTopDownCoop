@@ -43,7 +43,7 @@ public class BasePlayer : BaseCharacter
         Vector3 screenMovementRight = cameraAngle * Vector3.right;
 
         float horizontal = pDirection.x;
-        float vertical = pDirection.z;
+        float vertical = pDirection.z ;
 
         Vector3 direction = (screenMovementForward * vertical) + (screenMovementRight * horizontal);
 

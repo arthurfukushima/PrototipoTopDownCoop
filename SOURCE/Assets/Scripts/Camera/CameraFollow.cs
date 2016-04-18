@@ -3,18 +3,20 @@ using System.Collections;
 
 public class CameraFollow : MonoBehaviour 
 {
+    [Range(-10, 10)]
+    private float zoom = 0;
+
+    public float zoomSensitivity = 4.0f;
+
     public Vector3 targetFollowOffset;
 
     public Transform followTarget;
     public float followTargetSpeed = 100.0f;
 
-    private void Start()
+    private void LateUpdate()
     {
-//        targetFollowOffset = transform.position - followTarget.position;
-    }
+        zoom += Input.GetAxis("Mouse ScrollWheel") * zoomSensitivity;
 
-    private void FixedUpdate()
-    {
-        transform.position = Vector3.MoveTowards(transform.position, followTarget.position + targetFollowOffset, Time.deltaTime * followTargetSpeed);
+        transform.position = Vector3.MoveTowards(transform.position, followTarget.position + targetFollowOffset + (transform.forward * zoom ), Time.deltaTime * followTargetSpeed);
     }
 }

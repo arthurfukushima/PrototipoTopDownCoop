@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Networking;
 
 public class BaseProjectile : MonoBehaviour, IPoolObject
 {
@@ -52,7 +53,8 @@ public class BaseProjectile : MonoBehaviour, IPoolObject
 
     public void Despawn()
     {
-        
+        _PhysicsController.Velocity = Vector3.zero;
+        _PhysicsController.CachedRigidbody.angularVelocity = Vector3.zero;
     }
 
     public void DespawnIn(float fDelay)
