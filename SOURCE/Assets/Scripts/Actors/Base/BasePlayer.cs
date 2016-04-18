@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BasePlayer : BaseCharacter
 {
-    public bool hasControl;
+    protected bool hasControl;
 
     public override SKStateMachine<BaseCharacter> _StateMachine 
     {
@@ -19,6 +19,18 @@ public class BasePlayer : BaseCharacter
             }
 
             return stateMachine;
+        }
+    }
+
+    public bool _HasControl{
+        get{
+            return hasControl;
+        }
+        set{
+            hasControl = value;
+
+            if(!hasControl)
+                _StateMachine.ChangeState<BaseIdleState>();
         }
     }
 

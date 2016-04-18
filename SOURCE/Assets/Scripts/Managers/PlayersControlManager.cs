@@ -11,12 +11,12 @@ public class PlayersControlManager : SingletonMonoBehaviour<PlayersControlManage
     public void RegisterPlayer(BasePlayer pPlayer)
     {
         players.Add(pPlayer);
-        pPlayer.hasControl = false;
+        pPlayer._HasControl = false;
 
         if(currentPlayer == null)
         {
             currentPlayer = pPlayer;
-            currentPlayer.hasControl = true;
+            currentPlayer._HasControl = true;
             Camera.main.GetComponent<CameraFollow>().followTarget = currentPlayer.transform;
         }
     }
@@ -32,14 +32,14 @@ public class PlayersControlManager : SingletonMonoBehaviour<PlayersControlManage
 
     private void ControlNextPlayer()
     {
-        currentPlayer.hasControl = false;
+        currentPlayer._HasControl = false;
 
         currentPlayerIndex++;
         if(currentPlayerIndex >= players.Count)
             currentPlayerIndex = 0;
 
         currentPlayer = players[currentPlayerIndex];
-        currentPlayer.hasControl = true;
+        currentPlayer._HasControl = true;
 
         Camera.main.GetComponent<CameraFollow>().followTarget = currentPlayer.transform;
     }
