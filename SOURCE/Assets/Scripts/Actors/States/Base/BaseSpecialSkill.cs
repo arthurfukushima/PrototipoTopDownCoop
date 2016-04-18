@@ -17,6 +17,11 @@ public class BaseSpecialSkill : SKState<BaseCharacter>
     {
         base.Begin();
 
+        context._PhysicsController.Velocity = Vector3.zero;
+        context._PhysicsController.IsKinematic = true;
+
+        context._AnimationController.CrossFadeInFixedTime(AnimatoHash.FULLBODY_IDLE, 0.1f);
+
         Collider[] colliders = Physics.OverlapSphere(context.transform.position, 3.0f);
 
         foreach(Collider col in colliders)
@@ -41,5 +46,12 @@ public class BaseSpecialSkill : SKState<BaseCharacter>
         {
             context.ChangeState<BaseIdleState>();
         }
+    }
+
+    public override void End()
+    {
+        base.End();
+
+        context._PhysicsController.IsKinematic = false;
     }
 }

@@ -95,7 +95,7 @@ public class BaseCharacter : BaseActor
     }
 
 #region MOVEMENT
-    public void Move(Vector3 pDirection, float pSpeed)
+    public virtual void Move(Vector3 pDirection, float pSpeed)
     {
         Vector3 velocity = pDirection * pSpeed;
         velocity.y = _PhysicsController.Velocity.y;
