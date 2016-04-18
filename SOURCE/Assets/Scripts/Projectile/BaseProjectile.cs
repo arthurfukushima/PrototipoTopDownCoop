@@ -53,8 +53,7 @@ public class BaseProjectile : MonoBehaviour, IPoolObject
 
     public void Despawn()
     {
-        _PhysicsController.Velocity = Vector3.zero;
-        _PhysicsController.CachedRigidbody.angularVelocity = Vector3.zero;
+        
     }
 
     public void DespawnIn(float fDelay)
@@ -64,7 +63,8 @@ public class BaseProjectile : MonoBehaviour, IPoolObject
 
     public void OnDespawn()
     {
-        
+        _PhysicsController.Velocity = Vector3.zero;
+        _PhysicsController.CachedRigidbody.angularVelocity = Vector3.zero;
     }
 
 #endregion
