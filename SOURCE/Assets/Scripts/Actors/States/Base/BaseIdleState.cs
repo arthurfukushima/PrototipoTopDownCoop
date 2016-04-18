@@ -36,19 +36,20 @@ public class BaseIdleState : SKState<BaseCharacter>
             return;
         }
 
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+//        if(Input.GetButtonDown("Fire1"))
+        if(Input.GetButtonDown("Attack"))
         {
             context.ChangeState<BaseAttackState>();
             return;
         }
 
-        if(Input.GetKeyDown(KeyCode.Mouse1))
+        if(Input.GetButtonDown("Special"))
         {
             context.ChangeState<BaseSpecialSkill>();
             return;
         }
 
-        if(Input.GetKeyDown(KeyCode.LeftControl))
+        if(Input.GetButtonDown("Dodge"))
         {
             context.ChangeState<BaseRollState>();
             return;
@@ -58,14 +59,6 @@ public class BaseIdleState : SKState<BaseCharacter>
     public override void Update(float pDeltaTime)
     {
         base.Update(pDeltaTime);
-
         context.UpdateRotation();
-    }
-
-    public override void OnGUI()
-    {
-        base.OnGUI();
-
-        GUILayout.Box("Master: " + "IDLE");
     }
 }

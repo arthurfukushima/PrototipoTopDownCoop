@@ -51,7 +51,7 @@ public class BatteringRam : BaseActor
 
     public void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E))
+        if(Input.GetButtonDown("Attack"))
         {
             if(onInteractionAreaActors.Count > 0 && InventoryManager.Instance.coinsCount >= 10)
             {

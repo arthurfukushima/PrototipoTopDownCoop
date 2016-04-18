@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Networking;
+using System.Collections;
 
 public class BaseProjectile : MonoBehaviour, IPoolObject
 {
@@ -25,7 +26,13 @@ public class BaseProjectile : MonoBehaviour, IPoolObject
     {
         owner = pOwner;
         damage = pDamage;
+
+        _PhysicsController.Velocity = Vector3.zero;
+        _PhysicsController.CachedRigidbody.angularVelocity = Vector3.zero;
         _PhysicsController.AddForce(pDirection * pMovementSpeed);
+
+        StopAllCoroutines();
+        StartCoroutine(DespawnCoroutine(4.0f));
     }
 
     private void OnTriggerEnter(Collider pCollider)
@@ -42,18 +49,22 @@ public class BaseProjectile : MonoBehaviour, IPoolObject
         }
     }
 
+    private IEnumerator DespawnCoroutine(float pDelay)
+    {
+        yield return new WaitForSeconds(pDelay);
+        Despawn();
+    }
+
 #region IPoolObject implementation
 
     public void OnSpawn(SpawnPool pMyPool)
     {
         myPool = pMyPool;
-
-        DespawnIn(5.0f);
     }
 
     public void Despawn()
     {
-        
+        myPool.Despawn(gameObject);
     }
 
     public void DespawnIn(float fDelay)
@@ -63,8 +74,7 @@ public class BaseProjectile : MonoBehaviour, IPoolObject
 
     public void OnDespawn()
     {
-        _PhysicsController.Velocity = Vector3.zero;
-        _PhysicsController.CachedRigidbody.angularVelocity = Vector3.zero;
+        
     }
 
 #endregion

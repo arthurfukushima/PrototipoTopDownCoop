@@ -28,19 +28,19 @@ public class BaseRunState : SKState<BaseCharacter>
             return;
         }
 
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        if(Input.GetButtonDown("Attack"))
         {
             context.ChangeState<BaseAttackState>();
             return;
         }
 
-        if(Input.GetKeyDown(KeyCode.Mouse1))
+        if(Input.GetButtonDown("Special"))
         {
             context.ChangeState<BaseSpecialSkill>();
             return;
         }
 
-        if(Input.GetKeyDown(KeyCode.LeftControl))
+        if(Input.GetButtonDown("Dodge"))
         {
             context.ChangeState<BaseRollState>();
             return;

@@ -108,7 +108,22 @@ public class BaseCharacter : BaseActor
         Vector3 hitPosition = RaycastMousePosition();
         hitPosition.y = transform.position.y;
 
-        transform.rotation = Quaternion.LookRotation(hitPosition - transform.position);
+        Vector3 rightAxis = new Vector3(-Input.GetAxisRaw("JoyRight_X"), 0, Input.GetAxisRaw("JoyRight_Y"));
+
+        if(rightAxis != Vector3.zero)
+            hitPosition = transform.position + rightAxis;
+        else
+        {
+            Vector3 velocity = _PhysicsController.Velocity.normalized;
+            velocity.y = 0.0f;
+
+            hitPosition = transform.position - velocity;
+        }
+
+        Vector3 targetLook = transform.position - hitPosition;
+
+        if(targetLook != Vector3.zero)
+            transform.rotation = Quaternion.LookRotation(targetLook);
     }
 
     public void Rotate(Vector3 pDirection, float pSpeed)
@@ -140,7 +155,7 @@ public class BaseCharacter : BaseActor
 
         if(Physics.Raycast(ray, out hit, 100, _PhysicsController.groundLayers))
         {
-            Debug.DrawLine(ray.origin, hit.point, Color.red);
+//            Debug.DrawLine(ray.origin, hit.point, Color.red);
             return hit.point;
         }
 
